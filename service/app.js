@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+let session = require('express-session')
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
@@ -22,6 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// 添加 的 session
+
+app.use(session({
+  secret: '#sddjswjdhww22ygfw2233@@@%#$!@%Q!%*12',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // 使用路由
 app.use('/', index)

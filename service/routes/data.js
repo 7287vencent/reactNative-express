@@ -82,7 +82,7 @@ router.post('/write', (req, res, next) => {
     arr.splice(0, 0, obj)
     // 2) 写入文件
     let newData = JSON.stringify(arr)
-    fs.watchFile(filePath, newData, (err) => {
+    fs.writeFile(filePath, newData, (err) => {
       if (err) {
         return res.send({
           status: 0,
